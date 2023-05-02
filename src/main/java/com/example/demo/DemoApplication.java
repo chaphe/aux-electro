@@ -3,7 +3,7 @@ package com.example.demo;
 import org.neo4j.driver.*;
 import org.neo4j.driver.Record;
 import org.springframework.boot.SpringApplication;
-
+import org.springframework.data.neo4j.repository.Neo4jRepository;
 
 public class DemoApplication {
 
