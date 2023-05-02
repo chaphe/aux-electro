@@ -3,11 +3,10 @@ package com.example.demo;
 import org.neo4j.driver.*;
 import org.neo4j.driver.Record;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import static org.neo4j.driver.Values.parameters;
-@SpringBootApplication
+
 public class DemoApplication {
+
 
     public static void main(String[] args) {
 
@@ -15,8 +14,8 @@ public class DemoApplication {
         Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "12345678"));
         Session session = driver.session();
         //addLugar(session, "casa", 40, 1920);
-        //deleteLugar(session, "casa");
-        //addRelacion(session, "Casa 0", "Casa 2", "Conduce", 100);
+        deleteLugar(session, "casa");
+        //addRelacion(session, "casa", "Casa 2", "Conduce", 100);
         session.close();
         driver.close();
 
