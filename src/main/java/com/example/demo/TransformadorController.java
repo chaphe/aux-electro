@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/transformadores")
 public class TransformadorController {
 
-    @Autowired
-    private TransformadorRepository transformadorRepository;
+    private final TransformadorRepository transformadorRepository;
+
+    public TransformadorController(TransformadorRepository transformadorRepository) {
+        this.transformadorRepository = transformadorRepository;
+    }
 
     @PostMapping
     public Transformador crearTransformador(@RequestBody Transformador transformador) {
