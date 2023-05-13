@@ -1,9 +1,9 @@
 package com.example.demo;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Property;
+import org.springframework.data.neo4j.core.schema.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Node
 public class Estacion {
@@ -17,6 +17,12 @@ public class Estacion {
 
     @Property(name = "tipo")
     private String tipo;
+
+    @Relationship(type = "Conecta", direction = Relationship.Direction.OUTGOING)
+    private Set<Estacion> estacionesConectadas = new HashSet<>();
+
+    @Relationship(type = "Administra", direction = Relationship.Direction.OUTGOING)
+    private Set<Transformador> transformadoresAdministra = new HashSet<>();
 
     public Long getId() {
         return id;

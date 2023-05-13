@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/estaciones")
@@ -22,5 +19,9 @@ public class EstacionController {
         nuevaEstacion.setCapacidad(estacion.getCapacidad());
         nuevaEstacion.setTipo(estacion.getTipo());
         return estacionRepository.save(nuevaEstacion);
+    }
+    @DeleteMapping("/{id}")
+    public void eliminarEstacion(@PathVariable Long id) {
+        estacionRepository.deleteById(id);
     }
 }
