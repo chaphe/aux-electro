@@ -21,8 +21,8 @@ public class Estacion {
     @Relationship(type = "Conecta", direction = Relationship.Direction.OUTGOING)
     private Set<Estacion> estacionesConectadas = new HashSet<>();
 
-    @Relationship(type = "Administra", direction = Relationship.Direction.OUTGOING)
-    private Set<Transformador> transformadoresAdministra = new HashSet<>();
+    //@Relationship(type = "Administra", direction = Relationship.Direction.OUTGOING)
+    //private Set<Transformador> transformadoresAdministra = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -47,4 +47,18 @@ public class Estacion {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public Set<Estacion> getEstacionesConectadas() {
+        return estacionesConectadas;
+    }
+
+    public void conectar(Estacion otraEstacion) {
+        estacionesConectadas.add(otraEstacion);
+    }
+
+    public void desconectar(Estacion estacion) {
+        estacionesConectadas.remove(estacion);
+        estacion.getEstacionesConectadas().remove(this);
+    }
 }
+
