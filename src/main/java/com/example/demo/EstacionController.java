@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -66,4 +67,35 @@ public class EstacionController {
             }
         }
     }
+    // POST para agregar una relación "Administra" entre una Estacion y un Transformador
+    @PostMapping("/{estacionId}/administrar/{transformadorId}")
+    public Estacion administrarTransformador(@PathVariable Long estacionId, @PathVariable Long transformadorId) {
+        Estacion estacion = estacionRepository.findById(estacionId).orElse(null);
+        Transformador transformador = transformadorRepository.findById(transformadorId).orElse(null);
+        if (estacion != null && transformador != null) {
+            estacion.getTransformadoresAdministrados().add(transformador);
+            transformador.setEstacion(estacion);
+            estacionRepository.save(estacion);
+            transformadorRepository.save(transformador);
+        }
+        return estacion;
+    }
+
+    // DELETE para eliminar una relación "Administra" entre una Estacion y un Transformador
+    @DeleteMapping("/{estacionId}/desadministrar/{transformadorId}")
+    @Transactional
+    public Estacion eliminarTransformadorAdministrado(@PathVariable Long estacionId, @PathVariable Long transformadorId) {
+        Estacion estacion = estacionRepository.findById(estacionId).orElse(null);
+        Transformador transformador = transformadorRepository.findById(transformadorId).orElse(null);
+        if (estacion != null && transformador != null) {
+            estacion.getTransformadoresAdministrados().remove(transformador);
+            transformador.setEstacion(null);
+            estacionRepository.save(estacion);
+            transformadorRepository.save(transformador);
+            estacionRepository.deleteRelationAdministraTransformador(estacionId, transformadorId);
+        }
+        return estacion;
+    }
+
+
 }

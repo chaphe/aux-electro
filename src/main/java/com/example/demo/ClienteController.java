@@ -30,6 +30,12 @@ public class ClienteController {
         return clienteRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/estrato/{estrato}")
+    public List<Cliente> obtenerClientesPorEstrato(@PathVariable int estrato) {
+        return clienteRepository.findByEstrato(estrato);
+    }
+
+
     @PutMapping("/{id}")
     public Cliente actualizarCliente(@PathVariable("id") Long id, @RequestBody Cliente clienteActualizado) {
         Cliente clienteExistente = clienteRepository.findById(id).orElse(null);
