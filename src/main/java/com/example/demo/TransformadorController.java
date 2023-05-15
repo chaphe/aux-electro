@@ -24,6 +24,11 @@ public class TransformadorController {
         return transformadorRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/capacidad/{capacidad}")
+    public List<Transformador> getTransformadoresByCapacidad(@PathVariable Integer capacidad) {
+        return transformadorRepository.findByCapacidad(capacidad);
+    }
+
     @GetMapping("/")
     public List<Transformador> getAllTransformadores() {
         return transformadorRepository.findAll();
