@@ -74,7 +74,6 @@ public class EstacionController {
         Transformador transformador = transformadorRepository.findById(transformadorId).orElse(null);
         if (estacion != null && transformador != null) {
             estacion.getTransformadoresAdministrados().add(transformador);
-            transformador.setEstacion(estacion);
             estacionRepository.save(estacion);
             transformadorRepository.save(transformador);
         }
@@ -89,7 +88,6 @@ public class EstacionController {
         Transformador transformador = transformadorRepository.findById(transformadorId).orElse(null);
         if (estacion != null && transformador != null) {
             estacion.getTransformadoresAdministrados().remove(transformador);
-            transformador.setEstacion(null);
             estacionRepository.save(estacion);
             transformadorRepository.save(transformador);
             estacionRepository.deleteRelationAdministraTransformador(estacionId, transformadorId);
