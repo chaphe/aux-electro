@@ -71,30 +71,12 @@ public class TransformadorController {
         Transformador transformador = transformadorRepository.findById(id).orElse(null);
         Cliente cliente = clienteRepository.findById(clienteId).orElse(null);
         if (transformador != null && cliente != null) {
-            transformador.getClientesAlimentados().remove(cliente);
+            transformador.getClientesAlimentados().removeIf(c -> c.getId().equals(clienteId));
             transformadorRepository.save(transformador);
         }
         return transformador;
     }
-    @PostMapping("/{id}/pertenecer_a/{estacionId}")
-    public Transformador asignarEstacion(@PathVariable Long id, @PathVariable Long estacionId) {
-        Transformador transformador = transformadorRepository.findById(id).orElse(null);
-        Estacion estacion = estacionRepository.findById(estacionId).orElse(null);
-        if (transformador != null && estacion != null) {
-            transformador.setEstacion(estacion);
-            transformadorRepository.save(transformador);
-        }
-        return transformador;
-    }
-    @DeleteMapping("/{id}/estaciones")
-    public Transformador desasignarEstacion(@PathVariable Long id) {
-        Transformador transformador = transformadorRepository.findById(id).orElse(null);
-        if (transformador != null) {
-            transformador.setEstacion(null);
-            transformadorRepository.save(transformador);
-        }
-        return transformador;
-    }
+
 
 
 }

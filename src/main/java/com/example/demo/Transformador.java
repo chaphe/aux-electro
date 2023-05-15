@@ -23,8 +23,6 @@ public class Transformador {
     @Relationship(type = "Alimenta", direction = Relationship.Direction.OUTGOING)
     private Set<Cliente> clientesAlimentados;
 
-    @Relationship(type = "Pertenece_a", direction = Relationship.Direction.INCOMING)
-    private Estacion estacion;
 
     // Getters y setters
     public Long getId() {
@@ -65,13 +63,5 @@ public class Transformador {
 
     public void setClientesAlimentados(Set<Cliente> clientesAlimentados) {
         this.clientesAlimentados = clientesAlimentados;
-    }
-
-    public Estacion getEstacion() {
-        return estacion;
-    }
-
-    public void setEstacion(Estacion estacion) {
-        this.estacion = estacion;
     }
 }
