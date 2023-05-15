@@ -1,9 +1,9 @@
 package com.example.demo;
+import org.springframework.data.neo4j.core.schema.*;
+import com.example.demo.Estacion;
+import com.example.demo.Cliente;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Property;
+import java.util.Set;
 
 @Node
 public class Transformador {
@@ -19,6 +19,12 @@ public class Transformador {
 
     @Property(name = "tipo")
     private String tipo;
+
+    @Relationship(type = "Alimenta", direction = Relationship.Direction.OUTGOING)
+    private Set<Cliente> clientesAlimentados;
+
+    @Relationship(type = "Pertenece_a", direction = Relationship.Direction.INCOMING)
+    private Estacion estacion;
 
     // Getters y setters
     public Long getId() {
@@ -51,5 +57,21 @@ public class Transformador {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public Set<Cliente> getClientesAlimentados() {
+        return clientesAlimentados;
+    }
+
+    public void setClientesAlimentados(Set<Cliente> clientesAlimentados) {
+        this.clientesAlimentados = clientesAlimentados;
+    }
+
+    public Estacion getEstacion() {
+        return estacion;
+    }
+
+    public void setEstacion(Estacion estacion) {
+        this.estacion = estacion;
     }
 }
