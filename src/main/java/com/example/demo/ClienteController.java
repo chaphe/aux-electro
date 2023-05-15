@@ -36,7 +36,8 @@ public class ClienteController {
         if (clienteExistente != null) {
             clienteExistente.setNombre(clienteActualizado.getNombre());
             clienteExistente.setDireccion(clienteActualizado.getDireccion());
-            clienteExistente.setTarifa(clienteActualizado.getTarifa());
+            clienteExistente.setTipo(clienteActualizado.getTipo());
+            clienteExistente.setEstrato(clienteActualizado.getEstrato());
             return clienteRepository.save(clienteExistente);
         }
         return null;

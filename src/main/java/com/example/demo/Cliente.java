@@ -17,8 +17,11 @@ public class Cliente {
     @Property(name = "direccion")
     private String direccion;
 
-    @Property(name = "tarifa")
-    private String tarifa;
+    @Property(name = "tipo")
+    private String tipo;
+
+    @Property(name = "estrato")
+    private int estrato;
 
     // Getters y setters
     public Long getId() {
@@ -45,11 +48,19 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public String getTarifa() {
-        return tarifa;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTarifa(String tarifa) {
-        this.tarifa = tarifa;
+    public void setTipo(String estrato) {
+        this.tipo = estrato;
+    }
+
+    public int getEstrato() {
+        return estrato;
+    }
+
+    public void setEstrato(int estrato) {
+        this.estrato = estrato;
     }
 }
