@@ -28,14 +28,6 @@ test {
     useJUnitPlatform()
 }
 
-apply plugin: 'org.springframework.boot'
-
-jar {
-    manifest {
-        attributes 'Main-Class': 'com.example.demo.DemoApplication'
-    }
-}
-
 
 
 
