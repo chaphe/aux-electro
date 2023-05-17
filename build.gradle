@@ -30,6 +30,7 @@ test {
 
 jar {
     manifest {
+        enabled = false
         attributes 'Main-Class': 'com.example.demo.DemoApplication'
     }
 }
