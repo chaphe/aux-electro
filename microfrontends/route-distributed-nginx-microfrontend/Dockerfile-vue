@@ -1,0 +1,23 @@
+# build environment
+FROM node:16-alpine3.17 as builder
+
+COPY header /header
+
+WORKDIR /app
+
+COPY vue/package.json .
+COPY vue/package-lock.json .
+
+RUN npm install
+
+COPY vue .
+
+RUN npm run build
+
+# production environment
+FROM nginx:alpine
+
+COPY nginx-app.conf /etc/nginx/nginx.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+EXPOSE 80

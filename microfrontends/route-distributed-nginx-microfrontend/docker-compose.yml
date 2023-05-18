@@ -1,0 +1,25 @@
+version: "3"
+services:
+  app:
+    ports:
+      - "8080:80"
+    depends_on:
+      - app-react
+      - app-vue
+      - app-angular
+    build: .
+
+  app-react:
+    build:
+      context: .
+      dockerfile: Dockerfile-react
+
+  app-angular:
+    build:
+      context: .
+      dockerfile: Dockerfile-angular
+
+  app-vue:
+    build:
+      context: .
+      dockerfile: Dockerfile-vue
