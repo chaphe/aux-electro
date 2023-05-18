@@ -1,0 +1,28 @@
+version: "3"
+services:
+  angular-wc:
+    container_name: angular-wc
+    restart: always
+    ports:
+      - 5001:5001
+    build:
+      context: /micro-fe-ng
+      dockerfile: Dockerfile
+
+  react-wc:
+    container_name: react-wc
+    restart: always
+    ports:
+      - 5002:5002
+    build:
+      context: /micro-fe-react
+      dockerfile: Dockerfile
+
+  wrapper:
+    container_name: wrapper
+    restart: always
+    ports:
+      - 5000:5000
+    build:
+      context: /micro-fe-wrapper
+      dockerfile: Dockerfile
