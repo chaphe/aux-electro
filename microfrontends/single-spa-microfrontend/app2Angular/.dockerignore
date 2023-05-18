@@ -1,0 +1,20 @@
+# Ignora la carpeta node_modules
+**/node_modules/
+
+# Ignora el archivo .env
+**/.env
+
+# Ignora todos los archivos con extensión .log
+*.log
+
+# Ignora los directorios build y dist empaquetados de despliegue
+**/dist
+**/build
+
+# Ignora todos los archivos de respaldo creados por el editor de texto Vim
+*.swp
+
+# Ignora las carpetas y archivos específicos de Git
+**/.git/
+**/.gitignore
+**/.gitattributes

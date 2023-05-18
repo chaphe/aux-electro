@@ -1,0 +1,62 @@
+version: "3"
+services:
+  app1react:
+    container_name: app1react
+    restart: always
+    ports:
+      - "9001:9001"
+    build:
+      context: /app1React
+      dockerfile: Dockerfile
+
+  app2angular:
+    container_name: app2angular
+    restart: always
+    ports:
+      - "9002:9002"
+    build:
+      context: /app2Angular
+      dockerfile: Dockerfile
+
+  app3angular1:
+    container_name: app3angular1
+    restart: always
+    ports:
+      - "9003:9003"
+    build:
+      context: /app3Angular1
+      dockerfile: Dockerfile
+
+  app4vue:
+    container_name: app4vue
+    restart: always
+    ports:
+      - "9004:9004"
+    build:
+      context: /app4vue
+      dockerfile: Dockerfile
+
+  app5angular:
+    container_name: app5angular
+    restart: always
+    ports:
+      - "9005:9005"
+    build:
+      context: /app5Angular
+      dockerfile: Dockerfile
+
+  portal:
+    container_name: portal
+    restart: always
+    ports:
+      - "9000:9000"
+    depends_on:
+      - app1react
+      - app2angular
+      - app3angular1
+      - app4vue
+      - app5angular
+    build:
+      context: /portal
+      dockerfile: Dockerfile
+
