@@ -1,0 +1,16 @@
+# Ignorar archivos y directorios específicos
+node_modules/
+dist/
+e2e/
+.git/
+*.log
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.DS_Store
+.env
+**/.gitignore
+**/.gitpod.yml
+**/tsconfig.js
+**/tsconfig.lib.json
+**/tsconfig.spec.json

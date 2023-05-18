@@ -1,0 +1,33 @@
+.md-input-wrap {
+  // max-width: 500px;
+
+  &-icon {
+    width: 24px;
+    padding-left: 5px;
+    padding-right: 3px;
+    text-align: center;
+    border:none;
+    vertical-align: middle;
+    background-color: white;
+  }
+}
+
+:host::ng-deep input {
+  border: none;
+  outline: none;
+  height: 100%;
+  margin: 1px 0;
+  box-sizing: border-box;
+}
+
+:host {
+  display: inline-block;
+  padding: 1px 0;
+  border-width: 1px;
+  border-style: solid;
+}
+
+// css state class
+:host(.input-focus) {
+  outline: none;
+}

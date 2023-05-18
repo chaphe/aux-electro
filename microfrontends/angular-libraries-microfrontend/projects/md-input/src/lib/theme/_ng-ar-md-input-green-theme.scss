@@ -1,0 +1,11 @@
+$border-color: green;
+
+:host-context(.md-input-green-theme) {
+  border-color: $border-color;
+
+  &.input-focus {
+    -webkit-box-shadow: 0px 0px 5px  $border-color;
+    box-shadow: 0px 0px 5px  $border-color;
+    color: $border-color;
+  }
+}

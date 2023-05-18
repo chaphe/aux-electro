@@ -1,0 +1,15 @@
+<div class="input-wrap">
+  <ng-container *ngIf="!isSrcUrl else svgIconWithSrc">
+    <ng-ar-svg-icon [name]="icon" [svgStyle]="{ 'width.px': 22, 'height.px': 22 }" 
+      class="input-wrap-icon" [ngClass]="{'input-wrap-icon--highlight': isIconColorChange}">
+    </ng-ar-svg-icon>
+  </ng-container>
+
+  <ng-content></ng-content>
+</div>
+
+<ng-template #svgIconWithSrc>
+  <ng-ar-svg-icon [src]="src" [svgStyle]="{ 'width.px': 22, 'height.px': 22 }"
+    class="input-wrap-icon" [ngClass]="{'input-wrap-icon--highlight': isIconColorChange}">
+  </ng-ar-svg-icon>
+</ng-template>

@@ -1,0 +1,17 @@
+{
+  "name": "@ng-ar/bg-svg",
+  "version": "13.0.3",
+  "license": "MIT",
+  "keywords": [
+    "Angular", "Angular13", "angular_svg", "svg", "svg_background"
+  ],
+  "author": "Anand Raja",
+  "peerDependencies": {
+    "@angular/common": ">=13.0.0",
+    "@angular/core": ">=13.0.0",
+    "rxjs": ">=6.6.3"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

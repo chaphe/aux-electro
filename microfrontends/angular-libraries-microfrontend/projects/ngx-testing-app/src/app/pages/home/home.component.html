@@ -1,0 +1,131 @@
+<!-- <div class="wrapper">
+  <div>
+    <label>Normal Input:</label>
+    <input type="text" placeholder="Not from lib and outside">
+  </div>
+  
+  <div>
+    <label>Normal from svg lib:</label>
+    <ng-ar-input>
+      <input type="text" placeholder="type your text">
+    </ng-ar-input>
+  </div>
+
+  <div>
+    <label>Normal from md lib:</label>
+    <ng-ar-md-input>
+      <input type="text" placeholder="type your text">
+    </ng-ar-md-input>
+  </div>
+</div> -->
+
+<ng-ar-bg-svg imgPath="assets/images/bg.svg" [isMinHeightSet]="false">
+  <div class="wrapper">
+    <div>
+      <label>Normal Input:</label>
+      <input type="text" placeholder="Not from lib and outside">
+    </div>
+    
+    <div>
+      <label>Normal from svg lib:</label>
+      <ng-ar-input>
+        <input type="text" placeholder="type your text">
+      </ng-ar-input>
+    </div>
+  
+    <div>
+      <label>Normal from md lib:</label>
+      <ng-ar-md-input>
+        <input type="text" placeholder="type your text">
+      </ng-ar-md-input>
+    </div>
+  </div>
+</ng-ar-bg-svg>
+
+
+<ng-template #showSvgInput>
+  <h1>
+    SVG Input Icons
+    <ng-ar-svg-icon src="assets/images/face.svg" [svgStyle]="{ 'width.px': 29, 'height.px': 29, 'vertical-align': 'middle' }"></ng-ar-svg-icon>
+  </h1>
+  <div class="form">
+    <div class="form-row">
+      <label>Normal Input:</label>
+      <input type="text" placeholder="Not from lib">
+    </div>
+
+    <div class="form-row">
+      <label>default input prop:</label>
+      <ng-ar-input>
+        <input type="text" placeholder="Your text goes here">
+      </ng-ar-input>
+    </div>
+
+    <div class="form-row input-green-theme">
+      <label>Green svg input:</label>
+      <ng-ar-input src="assets/images/blue-mail.svg" [isSrcUrl]="true" [isIconColorChange]="false">
+        <input type="email" placeholder="Please enter you e-mail">
+      </ng-ar-input>
+    </div>
+
+    <div class="form-row">
+      <label>Ar lib input:</label>
+      <ng-ar-input [icon]="pencil">
+        <input type="text" placeholder="Please enter some text">
+      </ng-ar-input>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #defaultProjection>
+  <h1>Material Input Icons</h1>
+  <div class="form">
+    <div class="form-row">
+      <label>Normal Input:</label>
+      <input type="text" placeholder="Not from any lib">
+    </div>
+
+    <div class="form-row">
+      <label>Email Input:</label>
+      <ng-ar-md-input [icon]="'mail'">
+        <input class="normal-input" type="email" name="email" placeholder="Please enter your e-mail">
+      </ng-ar-md-input>
+    </div>
+
+    <div class="form-row">
+      <label>Without Input props :</label>
+      <ng-ar-md-input>
+        <input class="normal-input" type="text" placeholder="Please enter some text">
+      </ng-ar-md-input>
+    </div>
+
+    <div class="form-row md-input-green-theme">
+      <label>Playstore Link:</label>
+      <ng-ar-md-input icon="android">
+        <input class="normal-input" type="url" name="url" placeholder="Playstore app link">
+      </ng-ar-md-input>
+    </div>
+  </div>
+</ng-template>
+
+<div class="container">
+  <button type="button" (click)="onFlipInputs()" class="btn-test"> 
+    Show {{ showMdInput ? 'Svg ' : 'Material ' }} Inputs
+  </button>
+  <ng-container *ngIf="showMdInput else showSvgInput">
+    <ng-container [ngTemplateOutlet]="defaultProjection"></ng-container>
+  </ng-container>
+</div>
+
+<div class="img-container">
+  <h1>Available preloaded Icons with @ng-ar/input lib</h1>
+  <div class="img-container-wrap">
+    <div class="img-container-wrap-icon" *ngFor="let icon of availableIcons">
+      <ng-ar-svg-icon [name]="icon.icon" [svgStyle]="{ 'width.px': 24, 'height.px': 24 }">
+      </ng-ar-svg-icon>
+      <div>
+        {{ icon.icon }}
+      </div>
+    </div>
+  </div>
+</div>
