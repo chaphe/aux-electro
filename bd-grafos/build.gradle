@@ -1,0 +1,40 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+
+repositories {
+    mavenCentral()
+    google()
+    maven {
+        url "https://repository.neo4j.org/content/groups/public"
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
+    implementation 'org.neo4j.driver:neo4j-java-driver:4.3.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        enabled = false
+        attributes 'Main-Class': 'com.example.demo.DemoApplication'
+    }
+}
+
+
+
+
